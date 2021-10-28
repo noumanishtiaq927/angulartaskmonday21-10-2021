@@ -1,15 +1,17 @@
 <div class="register-form-title"><strong>Add Users</strong></div>
 <div class="register-form-container">
+  <!-- <h3 *ngIf="serverError" class="alert alert-danger">{{ serverError }}</h3> -->
   <mat-card class="register-form-card mat-elevation-z8">
     <mat-card-title class="register-form-card-title">
       Add a New User
     </mat-card-title>
     <form (ngSubmit)="onSubmit()" ngForm #f="ngForm">
       <mat-card-content>
-        <mat-grid-list cols="2" rowHeight="10vh" gutterSize="2vh">
-          <mat-grid-tile>
-            <mat-form-field floatLabel="never" appearance="fill">
-              <mat-label>firstName</mat-label>
+        <div class="container">
+        <div class="row">
+          <div class="col">
+            <mat-form-field  appearance="fill">
+              <mat-label>First Name</mat-label>
               <input
                 matInput
                 required
@@ -17,21 +19,25 @@
                 name="firstName"
               />
             </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <mat-form-field floatLabel="never" appearance="fill">
-              <mat-label>lastName</mat-label>
+            </div>
+            <div class="col">
+
+            <mat-form-field appearance="fill">
+              <mat-label>Last Name</mat-label>
               <input
                 matInput
                 ngModel
                 name="lastName"
                 [(ngModel)]="dar.lastName"
+                required
               />
             </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
+          </div>
+          </div>
+          <div class="row">
+          <div class="col">
             <mat-form-field appearance="fill">
-              <mat-label>gender</mat-label>
+              <mat-label>Gender</mat-label>
               <mat-select
                 ngModel
                 name="gender"
@@ -44,11 +50,12 @@
                 <mat-option value="other">other</mat-option>
               </mat-select>
             </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
+</div>
+<div class="col">
             <mat-form-field floatLabel="never" appearance="fill">
-              <mat-label>mobile</mat-label>
+              <mat-label>Mobile</mat-label>
               <input
+              type="number"
                 matInput
                 required
                 ngModel
@@ -56,38 +63,47 @@
                 [(ngModel)]="dar.mobile"
               />
             </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
+          </div>
+        </div>
+          <div class="row">
+          <div class="col">
             <mat-form-field floatLabel="never" appearance="fill">
               <mat-label>Password</mat-label>
               <input
+              type="password"
                 matInput
                 required
                 ngModel
                 name="password"
                 [(ngModel)]="dar.password"
+
               />
             </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
+</div>
+<div class="col">
             <mat-form-field floatLabel="never" appearance="fill">
-              <mat-label>Reenter the password</mat-label>
+              <mat-label>Re-enter the password</mat-label>
               <input
+              type="password"
                 matInput
                 required
                 ngModel
                 name="confirmPassword"
-                [(ngModel)]="dar.password"
+
+
               />
             </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
+          </div>
+          </div>
+<div class="row">
+          <div class="col">
             <mat-form-field appearance="fill">
-              <mat-label>designation</mat-label>
+              <mat-label>Designation</mat-label>
               <mat-select
                 ngModel
                 name="designation"
                 [(ngModel)]="dar.designation"
+                required
               >
                 <mat-option>Select Value from Given</mat-option>
                 <mat-option value="juniorDeveloper"
@@ -97,23 +113,26 @@
                 <mat-option value="coo">coo</mat-option>
               </mat-select>
             </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
+</div>
+<div class="col">
             <mat-form-field appearance="fill">
-              <mat-label>department</mat-label>
+              <mat-label>Department</mat-label>
               <mat-select
                 ngModel
                 name="department"
                 [(ngModel)]="dar.department"
+                required
               >
                 <mat-option>Select Value from Given</mat-option>
-                <mat-option value="it">it</mat-option>
+                <mat-option value="informationTechnology">it</mat-option>
                 <mat-option value="management">management</mat-option>
                 <mat-option value="sales">sales</mat-option>
               </mat-select>
             </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col">
             <mat-form-field floatLabel="never" appearance="fill">
               <mat-label>Email</mat-label>
               <input
@@ -123,17 +142,12 @@
                 name="email"
                 [(ngModel)]="dar.email"
               />
-              <span
-                class="register-form-error"
-                *ngIf="errorregister !== 'undefined'"
-                >{{ errorregister }}</span
-              >
-            </mat-form-field>
-          </mat-grid-tile>
 
-          <mat-grid-tile>
+            </mat-form-field>
+          </div>
+          <div class="col">
             <mat-form-field appearance="fill">
-              <mat-label>data of joining</mat-label>
+              <mat-label>Date of Joining</mat-label>
               <input
                 matInput
                 [matDatepicker]="mydatepicker"
@@ -141,46 +155,46 @@
                 ngModel
                 name="dateOfJoining"
                 [(ngModel)]="dar.dateOfJoining"
+                required
               />
               <mat-datepicker-toggle matSuffix [for]="mydatepicker">
                 <mat-datepicker #mydatepicker> </mat-datepicker>
               </mat-datepicker-toggle>
             </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile colspan="2">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
             <mat-form-field appearance="fill">
-              <mat-label>Textarea</mat-label>
+              <mat-label>Address</mat-label>
               <textarea
                 matInput
                 ngModel
                 name="address"
                 [(ngModel)]="dar.address"
+                required
               ></textarea>
             </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile colspan="2">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
             <mat-form-field appearance="fill">
               <mat-label>Upload Image</mat-label>
               <input matInput ngModel name="profilePic" [(ngModel)]="dar.pic" />
               <mat-icon
                 matSuffix
-                htmlFor="imageupload"
-                (click)="getupload()"
+
+
                 class="register-form-upload-input-icon"
                 >image</mat-icon
               >
-              <input
-                class="register-form-upload-input"
-                type="file"
-                #fileuploade
-                ngModel
-                (change)="fileupload()"
-                name="image"
-                id="imageupload"
-              />
+
             </mat-form-field>
-          </mat-grid-tile>
-        </mat-grid-list>
+          </div>
+        </div>
+        </div>
+
       </mat-card-content>
       <div class="register-form-buttons">
         <button
@@ -192,7 +206,7 @@
           Submit
         </button>
 
-        <h4>Cancel</h4>
+        <h4 class="register-form-reset" (click)="resetForm()">Cancel</h4>
       </div>
     </form>
   </mat-card>

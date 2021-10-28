@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { AllUsersComponent } from './users/all-users/all-users.component';
-import { SingleUserComponent } from './users/single-user/single-user.component';
+
 import { MaterialModule } from '../material/material.module';
 import { NocodeapiCrudService } from './services/nocodeapi/nocodeapi-crud.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,16 +16,18 @@ import { GraphcardComponent } from './reuse/graphcard/graphcard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from '../services/auth/auth-guard.service';
 
+
 @NgModule({
   declarations: [
     DashboardComponent,
     AllUsersComponent,
-    SingleUserComponent,
+
     SidenavComponent,
     TopnavComponent,
     CardComponent,
     HomeComponent,
     GraphcardComponent,
+
   ],
   imports: [
     CommonModule,

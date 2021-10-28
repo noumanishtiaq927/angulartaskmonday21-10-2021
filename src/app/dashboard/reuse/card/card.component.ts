@@ -19,7 +19,8 @@ export class CardComponent implements OnInit, AfterViewInit {
   @Input() iconname = '';
   @Input() title = '';
   @Input() number = 9;
-  @Input() value = 40;
+  @Input() value = "width: 78%";
+  @Input() color ="bg-success"
   ngOnInit(): void {}
   ngAfterViewInit() {
     console.log(this.cardelement);

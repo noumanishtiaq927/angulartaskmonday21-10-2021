@@ -15,15 +15,24 @@
     </div>
   </div>
 </div>
-<div class="home-card-one">
-  <app-card
-    *ngFor="let el of data"
-    [title]="el.title"
-    [number]="el.number"
-    [value]="el.value"
-    [dynamicName]="el.colors"
-    [iconname]="el.iconname"
-  ></app-card>
-
-  <app-graphcard></app-graphcard>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let el of data" class="col-md-6 col-lg-4 col-xl-3">
+      <app-card
+        [title]="el.title"
+        [number]="el.number"
+        [value]="el.value"
+        [dynamicName]="el.colors"
+        [iconname]="el.iconname"
+        [color]="el.color"
+      ></app-card>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <app-graphcard></app-graphcard>
+    </div>
+  </div>
 </div>

@@ -1,20 +1,11 @@
-.chart-card-two {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 1vh 1vw;
-}
-/* .graph1 {
+.graph1 {
+  background-color: rgb(255, 255, 255);
 
-  margin: 1vh 1vw;
-} */
-/* .graph1 {
-  flex: 0.3;
-
-} */
-mat-card {
-  margin: 1vh 1vw;
+  border-radius: 10px;
 }
-.gap{
-  flex:1;
+
+.graph2 {
+  background-color: white;
+
+  border-radius: 10px;
 }

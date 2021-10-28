@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { NocodeapiCrudService } from '../../services/nocodeapi/nocodeapi-crud.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface UserData {
   userId: string;
@@ -74,15 +75,11 @@ export class AllUsersComponent implements OnInit, AfterViewInit {
 
   constructor(
     private noCodeApiCrud: NocodeapiCrudService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private snackbar: MatSnackBar
+      ) {}
   getAirtableData() {
-    // this.noCodeApiCrud.getData().subscribe((data: any) => {
-    //   this.dataSource = new MatTableDataSource(data);
-    //   console.log(this.dataSource);
-    //   this.dataSource.paginator = this.paginator;
-    //   this.dataSource.sort = this.sort;
-    // });
+
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -98,10 +95,17 @@ export class AllUsersComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngOnInit(): void {
+  onRefresh(){
     this.noCodeApiCrud.getData().subscribe((data: any) => {
       // console.log(data);
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
+  ngOnInit(): void {
+    this.noCodeApiCrud.getData().subscribe((data: any) => {
+     this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -110,12 +114,23 @@ export class AllUsersComponent implements OnInit, AfterViewInit {
   }
   deletedata(data: any) {
     // console.log({ data });
-    this.noCodeApiCrud.deleteData(data.id).subscribe((data) => {
-      console.log(data);
+    this.noCodeApiCrud.deleteData(data.id).subscribe((datar) => {
+      console.log(datar)
+      console.log(this.dataSource.data)
+     this.dataSource = this.dataSource.data.filter((item:any) => item.id !== data.id)
+     console.log(this.dataSource)
+     this.dataSource = new MatTableDataSource(this.dataSource);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.snackbar.open(datar.message, 'Dismiss',{
+        horizontalPosition:'center',
+        verticalPosition:'top',
+        direction:'ltr',
+
+      })
     });
   }
   updateData(data: any) {
-
     this.router.navigate(['/dashboard', 'edit', data.id]);
     console.log(data);
     this.noCodeApiCrud.dataget.next(data);

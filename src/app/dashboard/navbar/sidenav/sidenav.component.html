@@ -1,11 +1,14 @@
 <br />
 <br />
 <h4 class="firstline">{{ logo | uppercase }}</h4>
+<img *ngIf="!profilePic else elseImg"   class="user-avatar-sidenav" src="../../../../assets/pic.jpg"/>
+<ng-template #elseImg>
 <img
   class="user-avatar-sidenav"
   [src]="profilePic"
   alt=""
 />
+</ng-template>
 <div class="biodata-sidenav">
   <p class="name-sidenav">{{ name }}</p>
   <p class="designation-sidenav">{{ designation }}</p>

@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { NocodeapiCrudService } from 'src/app/dashboard/services/nocodeapi/nocodeapi-crud.service';
-
+import {MatDialog} from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-sign-in-form',
   templateUrl: './sign-in-form.component.html',
@@ -10,12 +11,28 @@ import { NocodeapiCrudService } from 'src/app/dashboard/services/nocodeapi/nocod
 export class SignInFormComponent implements OnInit {
   noerror: any;
   errorlogin: any;
+  success:any
   constructor(
     private nocrudapi: NocodeapiCrudService,
-    private router: Router
+    private router: Router,
+
+    public dialog: MatDialog,
+    private snackbar: MatSnackBar
   ) {}
   @ViewChild('signin') formvalue: any;
-  ngOnInit(): void {}
+  signedin:any
+  ngOnInit(): void {
+    this.signedin = localStorage.getItem('login')
+    if(this.signedin !== null){
+      const datasign = JSON.parse(this.signedin)
+      this.nocrudapi.isAuth === true
+      this.router.navigate(['/dashboard'],{state:datasign})
+
+    }
+    else{
+      this.nocrudapi.isAuth === false
+    }
+  }
   Signin() {
     console.log(this.formvalue.value.email);
     console.log(this.formvalue.value.password);
@@ -25,12 +42,29 @@ export class SignInFormComponent implements OnInit {
         if (data.message) {
           this.errorlogin = data.message;
         } else {
-          console.log(data)
-          this.nocrudapi.isAuth = true;
-          this.router.navigate(['/dashboard'],{state : data });
+          localStorage.setItem('login', JSON.stringify(data))
+         let snackBarRef=  this.snackbar.open('Login Success', 'Dismiss',{
+            horizontalPosition:'center',
+            verticalPosition:'top',
+            direction:'ltr',
+
+          })
+          snackBarRef.afterDismissed().subscribe(()=>{
+            console.log(data)
+            this.router.navigate(['/dashboard'],{state : data });
+          })
+         // this.router.navigate(['/dashboard'],{state : data });
         }
+      }, (error)=>{
+        this.errorlogin = error.statusText
       });
     // this.nocrudapi.isAuth = true;
     // this.router.navigate(['/dashboard']);
+  }
+  openDialog() {
+  //  this.dialog.open(DialogElementsExampleDialog);
+  }
+  resetForm(){
+    this.formvalue.resetForm()
   }
 }

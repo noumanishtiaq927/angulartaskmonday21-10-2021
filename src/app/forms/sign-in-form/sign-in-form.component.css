@@ -35,6 +35,7 @@ mat-form-field {
   font-size: 14px;
   font-weight: 500;
   color: grey;
+  cursor: pointer;
 }
 .sign-in-form-error {
   text-align: center;

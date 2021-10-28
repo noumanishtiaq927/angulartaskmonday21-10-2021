@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { matDrawerAnimations } from '@angular/material/sidenav';
+
+import { NocodeapiCrudService } from '../../services/nocodeapi/nocodeapi-crud.service';
 
 @Component({
   selector: 'app-topnav',
@@ -11,11 +12,21 @@ export class TopnavComponent implements OnInit {
   @Input() valu:any
   @Output() event = new EventEmitter()
   @Input() profilePic:any
-  constructor() {}
+  @Output() sidenav: EventEmitter<any> = new EventEmitter();
+
+  toggle() {
+   this.sidenav.emit();
+   }
+  showexpand = true;
+  constructor( private nocrudapi: NocodeapiCrudService) {}
 togglesidenav($event:any){
 console.log(this.valu)
 this.event.emit()
 console.log(this.event.emit($event))
 }
   ngOnInit(): void {}
+  logoutuser(){
+    localStorage.removeItem('login')
+    window.location.reload()
+  }
 }

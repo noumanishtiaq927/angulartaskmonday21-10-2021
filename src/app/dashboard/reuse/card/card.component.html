@@ -13,10 +13,8 @@
       </div>
     </div>
     <br />
-    <mat-progress-bar
-      class="progress-bar-card"
-      mode="determinate"
-      [value]="value"
-    ></mat-progress-bar>
+    <div class="progress">
+      <div [ngClass]="['progress-bar','progress-bar-striped', color]" role="progressbar" [style]="value" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
   </mat-card-content>
 </mat-card>

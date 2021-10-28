@@ -1,18 +1,11 @@
-<div class="chart-card-two">
-  <div class="graph1">
-    <mat-card class="card-style-graph">
-      <mat-card-content>
-        <canvas id="myChart" #mychart width="600" height="400"></canvas>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="gap"></div>
-
-  <div class="graph2">
-    <mat-card>
-      <mat-card-content>
-        <canvas id="myChart2" #mychart2 width="400" height="500"></canvas>
-      </mat-card-content>
-    </mat-card>
+<div class="container">
+  <div class="chart-card-two row">
+    <div class="graph1 mat-elevation-z8 col-lg-7 col-md-7 col-xm-11">
+      <canvas class="chart1" id="myChart" #mychart></canvas>
+    </div>
+    <div class="col-md-auto">&nbsp;</div>
+    <div class="graph2 mat-elevation-z8 col-lg-4 col-md-4 col-xm-11">
+      <canvas class="chart2" id="myChart2" #mychart2></canvas>
+    </div>
   </div>
 </div>

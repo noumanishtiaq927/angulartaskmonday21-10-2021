@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ɵpublishDefaultGlobalUtils,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Chart, registerables } from 'chart.js';
 @Component({
@@ -48,6 +43,22 @@ export class GraphcardComponent implements OnInit {
     new Chart(this.ctx2, {
       type: 'doughnut',
       data: this.data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            align: 'start',
+          },
+          title: {
+            display: true,
+            text: 'Hotel Booking Details',
+            position: 'top',
+            align: 'start',
+          },
+        },
+      },
     });
     new Chart(this.ctx, {
       type: 'line',
@@ -68,7 +79,23 @@ export class GraphcardComponent implements OnInit {
             fill: true,
           },
         ],
+
         labels: ['January 2019', 'February 2019', 'March 2019', 'April 2019'],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Hotel Survey',
+            position: 'top',
+            align: 'start',
+          },
+        },
       },
     });
   }

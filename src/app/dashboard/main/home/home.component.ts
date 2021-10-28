@@ -11,30 +11,34 @@ export class HomeComponent implements OnInit {
     {
       title: 'total users',
       number: 12390,
-      value: 18,
+      value: "width: 75%",
       colors: 'purpleCard',
       iconname: 'face',
+      color:"bg-secondary"
     },
     {
       title: 'total rooms',
       number: 1200,
-      value: 50,
+      value: "width: 55%",
       colors: 'orangeCard',
       iconname: 'hotel',
+      color:"bg-warning"
     },
     {
       title: 'total departments',
       number: 120,
-      value: 90,
+      value: "width: 40%",
       colors: 'greenCard',
       iconname: 'home',
+      color:"bg-success"
     },
     {
       title: 'total designation',
       number: 90,
-      value: 65,
+      value: "width: 80%",
       colors: 'blueCard',
       iconname: 'person',
+      color:"bg-info"
     },
   ];
   constructor() {}

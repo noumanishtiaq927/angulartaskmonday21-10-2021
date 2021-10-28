@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { NocodeapiCrudService } from './nocodeapi-crud.service';
 
-describe('NocodeapiCrudService', () => {
+xdescribe('NocodeapiCrudService', () => {
   let service: NocodeapiCrudService;
 
   beforeEach(() => {

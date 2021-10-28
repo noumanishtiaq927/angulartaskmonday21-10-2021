@@ -18,7 +18,14 @@ export class DashboardComponent implements OnInit {
     this.drawer?.toggle()
   }
   ngOnInit(): void {
+    const users = localStorage.getItem('login')
+    if(users !== null){
+      console.log(users)
+      this.user = JSON.parse(users)
+      console.log(this.user)
+    }else {
     console.log(history.state)
     this.user=history.state
+    }
   }
 }
